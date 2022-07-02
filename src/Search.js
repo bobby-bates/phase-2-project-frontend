@@ -1,10 +1,24 @@
+import { useState } from 'react'
+
 export default function Search({ cities }) {
+  const [searchStr, setSearchStr] = useState('')
 
-  console.log(cities)
+  const handleSearchChange = e => setSearchStr(e.target.value)
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log(searchStr)
+
+    setSearchStr('')
+  }
   return (
-
     <>
-      <h1>Hi from Search</h1>
+      <form onSubmit={handleSubmit}>
+        <label>FIND A CITY
+          <input type='text' onChange={handleSearchChange} value={searchStr} />
+        </label>
+        <button type='submit'>GO</button>
+      </form>
     </>
   )
 }
