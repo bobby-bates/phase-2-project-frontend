@@ -1,6 +1,10 @@
-export default function Search() {
+export default function Search({ cities }) {
 
+  console.log(cities)
   return (
-    <h1>Hi from Search</h1>
+
+    <>
+      <h1>Hi from Search</h1>
+    </>
   )
 }
