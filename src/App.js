@@ -26,13 +26,13 @@ export default function App() {
       <Route index element={<Home />} />
       <Route path='/' element={<NavBar />}>
         <Route path='search' element={<Search />}>
-          <Route path='search/:cityName' element={<SearchResult cities={cities} />} />
+          <Route path=':cityName' element={<SearchResult cities={cities} />} />
         </Route>
         <Route path='sort' element={<Sort />}>
-          <Route path='sort/abc' element={<SortResults cities={cities} />} />
-          <Route path='sort/deptartments' element={<SortResults cities={cities} />} />
-          <Route path='sort/pop-max-min' element={<SortResults cities={cities} />} />
-          <Route path='sort/pop-min-max' element={<SortResults cities={cities} />} />
+          <Route path='abc' element={<SortResults cities={cities} />} />
+          <Route path='deptartments' element={<SortResults cities={cities} />} />
+          <Route path='pop-max-min' element={<SortResults cities={cities} />} />
+          <Route path='pop-min-max' element={<SortResults cities={cities} />} />
         </Route>
       </Route>
     </Routes>
