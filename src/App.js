@@ -25,8 +25,8 @@ export default function App() {
     <Routes>
       <Route index element={<Home />} />
       <Route path='/' element={<NavBar />}>
-        <Route path='search' element={<Search />}>
-          <Route path=':cityName' element={<SearchResult cities={cities} />} />
+        <Route path='search' element={<Search cities={cities} />}>
+          <Route path=':cityName' element={<SearchResult />} />
         </Route>
         <Route path='sort' element={<Sort />}>
           <Route path='abc' element={<SortResults cities={cities} />} />
