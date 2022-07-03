@@ -1,17 +1,29 @@
 import { useParams, useLocation } from 'react-router-dom'
+import Table from 'react-bootstrap/Table'
 
 export default function SearchResult() {
   // debugger
-  const cityParams = useParams().cityName
-  const loc = useLocation()
-  const city = loc.state.city
-  console.log(city)
+  // const cityParams = useParams().cityName
+  const city = useLocation().state.city
+  // console.log(city)
   return (
     <>
-      <h1>User entered {cityParams}</h1>
-      <h2>Which is the same as {city.city}</h2>
-
-      
+      <Table borderless>
+        <tbody>
+          <tr>
+            <th>City:</th>
+            <td>{city.city}</td>
+          </tr>
+          <tr>
+            <th>Department:</th>
+            <td>{city.adminName}</td>
+          </tr>
+          <tr>
+            <th>Population:</th>
+            <td>{city.population}</td>
+          </tr>
+        </tbody>
+      </Table>
     </>
   )
 }
