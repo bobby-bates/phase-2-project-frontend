@@ -19,7 +19,7 @@ export default function Search({ cities }) {
     if (matchIndex !== -1) {
       navigate(`${cities[matchIndex].city}`, {state:{ city: cities[matchIndex] }})
     } else console.log(`Error: ${searchStr} not found`)
-    // TODO: Add error below searchbox
+    // TODO: Add Bootstrap error banner when city is not found
     setSearchStr('')
   }
   return (

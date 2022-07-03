@@ -6,7 +6,7 @@ export default function SearchResult() {
   // const cityParams = useParams().cityName
   const city = useLocation().state.city
 
-  const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${city.lat},${city.lng}&zoom=11&size=400x400&key=AIzaSyDF8PzvjuzBnixB4AGXiCfRN_2QC6GzoBk`
+  const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${city.lat},${city.lng}&zoom=10&size=400x400&key=AIzaSyDF8PzvjuzBnixB4AGXiCfRN_2QC6GzoBk`
 
   return (
     <>
@@ -22,7 +22,7 @@ export default function SearchResult() {
           </tr>
           <tr>
             <th>Population:</th>
-            <td>{city.population}</td>
+            <td>{city.population.toLocaleString('en')} people</td>
           </tr>
         </tbody>
       </Table>
