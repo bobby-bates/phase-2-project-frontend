@@ -10,7 +10,7 @@ export default function Search({ cities }) {
   const handleSubmit = e => {
     e.preventDefault()
     // NOTE: Search logic needs to be here
-    navigate(`${searchStr}`)
+    navigate(`${searchStr}`, {state:{ yo: 'yo' }})
     setSearchStr('')
   }
   return (
