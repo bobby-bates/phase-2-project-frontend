@@ -5,20 +5,20 @@ export default function Search({ cities }) {
   const [searchStr, setSearchStr] = useState('')
   const navigate = useNavigate()
 
+  const isEnabled = searchStr.length > 0
+
   const handleSearchChange = e => setSearchStr(e.target.value)
 
   const handleSubmit = e => {
     e.preventDefault()
     const matchIndex = cities.findIndex((city, i) => {
-      // debugger
       // Compare, ignoring case and accents:
       return searchStr.localeCompare(city.city, 'es-CO', { sensitivity: 'base' }) === 0
     })
     // debugger
     console.log(matchIndex)
-    // if ()
-
-    navigate(`${searchStr}`, {state:{ yo: 'yo' }})
+    if (matchIndex === 0) navigate(`${searchStr}`, {state:{ city: cities[matchIndex] }})
+    else 
     setSearchStr('')
   }
   return (
@@ -28,7 +28,7 @@ export default function Search({ cities }) {
         <label>FIND A CITY
           <input type='text' onChange={handleSearchChange} value={searchStr} />
         </label>
-        <button type='submit'>GO</button>
+        <button type='submit'disabled={!isEnabled}>GO</button>
       </form>
 
       <Outlet />
