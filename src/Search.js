@@ -11,14 +11,15 @@ export default function Search({ cities }) {
 
   const handleSubmit = e => {
     e.preventDefault()
-    const matchIndex = cities.findIndex((city, i) => {
+    const matchIndex = cities.findIndex((city) => {
       // Compare, ignoring case and accents:
       return searchStr.localeCompare(city.city, 'es-CO', { sensitivity: 'base' }) === 0
     })
     // debugger
     console.log(matchIndex)
-    if (matchIndex === 0) navigate(`${searchStr}`, {state:{ city: cities[matchIndex] }})
-    else 
+    if (matchIndex !== -1) {
+      navigate(`${cities[matchIndex].city}`, {state:{ city: cities[matchIndex] }})
+    } else console.log(`Error: ${searchStr} not found`)
     setSearchStr('')
   }
   return (
