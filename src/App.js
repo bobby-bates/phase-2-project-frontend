@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import NavBar from './NavBar'
 import Home from './Home'
 import Search from './Search'
-import SearchResult from './searchResult'
+import SearchResult from './SearchResult'
 import Sort from './Sort'
 import SortResults from './SortResults'
 

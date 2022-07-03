@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Outlet } from 'react-router-dom'
 
 export default function Search({ cities }) {
   const [searchStr, setSearchStr] = useState('')
@@ -9,8 +9,8 @@ export default function Search({ cities }) {
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(searchStr)
-    navigate('')
+    // NOTE: Search logic needs to be here
+    navigate(`${searchStr}`)
     setSearchStr('')
   }
   return (
@@ -21,6 +21,8 @@ export default function Search({ cities }) {
         </label>
         <button type='submit'>GO</button>
       </form>
+
+      <Outlet />
     </>
   )
 }
