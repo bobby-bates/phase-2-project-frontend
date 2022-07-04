@@ -29,7 +29,7 @@ export default function App() {
         </Route>
         <Route path='sort' element={<Sort cities={cities} />}>
           <Route path='abc' element={<SortResults />} />
-          <Route path='deptartments' element={<SortResults />} />
+          <Route path='departments' element={<SortResults />} />
           <Route path='pop-max-min' element={<SortResults />} />
           <Route path='pop-min-max' element={<SortResults />} />
         </Route>
