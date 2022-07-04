@@ -6,7 +6,6 @@ export default function SearchResult() {
   // const cityParams = useParams().cityName
   const city = useLocation().state.city
   const API_KEY = process.env.REACT_APP_API_KEY
-  console.log(API_KEY)
 
   // TODO: Find a way to multiline this URL without breaking it
   const mapUrl = 
@@ -31,7 +30,7 @@ export default function SearchResult() {
           </tr>
         </tbody>
       </Table>
-      <img src={mapUrl} alt='Google Map of Colombia' />
+      <img src={mapUrl} alt={`Google Map of ${city.city}`} />
     </>
   )
 }

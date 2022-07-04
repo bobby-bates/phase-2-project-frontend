@@ -7,22 +7,21 @@ export default function Sort({ cities }) {
   const handleSort = e => {
     // debugger
     const name = e.target.name
-    
-    // Sort logic here:
-    // const sortCities = cities.sort((a, b) => )
 
-    // Finally, navigate to correct url & pass sorted cities as props:
+    // Create array of city name strings:
+    const cityNames = cities.map(city => city.city)
+    // debugger
     // eslint-disable-next-line default-case
     switch (name) {
       case 'abc':
         // debugger
-        // const sortedCities = cities.sort((a, b) => {
-        //   // debugger
-        //   return a.name.localeCompare(b.name, 'es-CO', { ignorePunctuation: true })
-        // })
-
-        navigate('abc')
-        // navigate('abc', {state:{ sortedCities: sortedCities }})
+        const sortedCities = cityNames.sort((a, b) => {
+          // debugger
+          return a.localeCompare(b, 'es-CO', { ignorePunctuation: true })
+        })
+        // debugger
+        // navigate('abc')
+        navigate('abc', {state:{ sortedCities: sortedCities }})
         break
       case 'departments':
         navigate('departments')
