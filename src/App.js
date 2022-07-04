@@ -25,7 +25,7 @@ export default function App() {
       const name = e.target.innerText
       const dept = e.target.dataset.cityDept
       const foundCity = cities.find(city => city.city === name && city.adminName === dept)
-      // console.log(cities[1].fav)
+      
       if (!foundCity.fav) {
         setCities([...cities, foundCity.fav = true])
         setAlert(<h1>{name} added as a favorite!</h1>)

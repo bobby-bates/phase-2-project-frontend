@@ -98,6 +98,7 @@ export default function Sort({ cities }) {
           </Dropdown.Item>
         </DropdownButton>
       </label>
+      
       <Outlet />
     </>
   )
