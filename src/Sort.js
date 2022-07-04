@@ -5,7 +5,6 @@ export default function Sort({ cities }) {
   const navigate = useNavigate()
 
   const sortByABC = name => {
-    // Create array of city name strings:
     const cityNames = cities.map((city, i) => ({ i, name: city.city }))
 
     const sortedCityNames = cityNames.sort((a, b) => {
@@ -21,12 +20,12 @@ export default function Sort({ cities }) {
   }
 
   const sortByDepartments = name => {
-    // Create arr of all departments:
+    // Create arr of all department names:
     const depts = []
     cities.forEach(city => (
       !depts.includes(city.adminName) ? depts.push(city.adminName) : null
     ))
-    // Loop depts and create abc sorted arr for each dept
+    // Loop depts and create abc sorted arr for each dept:
     let deptArrs = []
     depts.forEach(dept => {
       const deptArr = cities.filter(city => city.adminName === dept)
@@ -47,9 +46,17 @@ export default function Sort({ cities }) {
   }
 
   const sortByPop = name => {
-    
+    const popArr = cities.map((city, i) => ({ i, pop: city.population }))
 
-    navigate(name)
+    const sortedPops = popArr.sort((a, b) => {
+      const popA = a.pop
+      const popB = b.pop
+
+      return name === 'pop-max-min' ? popA + popB : popA - popB
+    })
+    const sortedCities = sortedPops.map(pop => cities[pop.i])
+
+    navigate(name, {state: { citiesByPop: sortedCities}})
   }
 
   const handleSort = e => {
@@ -62,7 +69,8 @@ export default function Sort({ cities }) {
       case 'departments':
         sortByDepartments(name)
         break
-      case 'pop-max-min' || 'pop-min-max':
+      case 'pop-max-min':
+      case 'pop-min-max':
         sortByPop(name)
         break
     }
