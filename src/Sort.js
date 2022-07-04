@@ -25,6 +25,12 @@ export default function Sort({ cities }) {
     cities.forEach(city => (
       !depts.includes(city.adminName) ? depts.push(city.adminName) : null
     ))
+
+    // Sort depts in alphabetical order:
+    depts.sort((a, b) => {
+      return a.localeCompare(b, 'es-CO', { ignorePunctuation: true })
+    })
+    
     // Loop depts and create abc sorted arr for each dept:
     let deptArrs = []
     depts.forEach(dept => {
@@ -36,13 +42,10 @@ export default function Sort({ cities }) {
       })
       deptArrs.push(deptArr)
     })
+
     // Merge all sorted dept arrs into single arr:
-    const citiesByDeptSingleArr = deptArrs.flat()
-    navigate(name,
-      {state:{
-        citiesByDeptSingleArr: citiesByDeptSingleArr,
-        citiesByDeptManyArrs: deptArrs
-      }})
+    const citiesByDept = deptArrs.flat()
+    navigate(name, {state:{ citiesByDept: citiesByDept }})
   }
 
   const sortByPop = name => {

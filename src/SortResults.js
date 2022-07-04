@@ -10,6 +10,7 @@ export default function SortResults() {
 
   const abcOutput = () => {
     const sortedCities = location.state.sortedCities
+
     return sortedCities.map(city => {
       return (
         <tr key={`${city.city}${city.population}`}>
@@ -22,8 +23,16 @@ export default function SortResults() {
   }
 
   const deptOutput = () => {
-    const citiesByDeptSingleArr = location.state.citiesByDeptSingleArr
-    const citiesByDeptManyArrs = location.state.citiesByDeptManyArrs
+    const citiesByDept = location.state.citiesByDept
+    return citiesByDept.map(city => {
+        return (
+        <tr key={`${city.city}${city.population}`}>
+          <td>{city.city}</td>
+          <td>{city.adminName}</td>
+          <td>{city.population}</td>
+        </tr>
+      )
+    })
   }
 
   const popOutput = route => {
