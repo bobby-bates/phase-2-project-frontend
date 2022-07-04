@@ -4,7 +4,7 @@ import { DropdownButton, Dropdown } from 'react-bootstrap'
 export default function Sort({ cities }) {
   const navigate = useNavigate()
 
-  const sortByABC = () => {
+  const sortByABC = name => {
     // Create array of city name strings:
     const cityNames = cities.map((city, i) => ({ i, name: city.city }))
 
@@ -17,15 +17,15 @@ export default function Sort({ cities }) {
     // Combine sorted city names with full cities arr:
     const sortedCities = sortedCityNames.map(name => cities[name.i])
 
-    navigate('abc', {state:{ sortedCities: sortedCities }})
+    navigate(name, {state:{ sortedCities: sortedCities }})
   }
 
-  const sortByDepartments = () => {
+  const sortByDepartments = name => {
     // Create arr of all departments:
     const depts = []
-    cities.forEach(city => {
-      return !depts.includes(city.adminName) ? depts.push(city.adminName) : null
-    })
+    cities.forEach(city => (
+      !depts.includes(city.adminName) ? depts.push(city.adminName) : null
+    ))
     // Loop depts and create abc sorted arr for each dept
     let deptArrs = []
     depts.forEach(dept => {
@@ -39,27 +39,31 @@ export default function Sort({ cities }) {
     })
     // Merge all sorted dept arrs into single arr:
     const citiesByDeptSingleArr = deptArrs.flat()
-    navigate('departments',
+    navigate(name,
       {state:{
         citiesByDeptSingleArr: citiesByDeptSingleArr,
         citiesByDeptManyArrs: deptArrs
       }})
   }
+
+  const sortByPop = name => {
+    
+
+    navigate(name)
+  }
+
   const handleSort = e => {
     const name = e.target.name
     // eslint-disable-next-line default-case
     switch (name) {
       case 'abc':
-        sortByABC()
+        sortByABC(name)
         break
       case 'departments':
-        sortByDepartments()
+        sortByDepartments(name)
         break
-      case 'pop-max-min':
-        navigate('pop-max-min')
-        break
-      case 'pop-min-max':
-        navigate('pop-min-max')
+      case 'pop-max-min' || 'pop-min-max':
+        sortByPop(name)
         break
     }
   }
@@ -68,10 +72,18 @@ export default function Sort({ cities }) {
     <>
       <label>SORT CITIES BY:
         <DropdownButton id='dropdown-basic-button' title='SELECT'>
-          <Dropdown.Item onClick={handleSort} name={'abc'}>ABC</Dropdown.Item>
-          <Dropdown.Item onClick={handleSort} name={'departments'}>DEPARTMENTS</Dropdown.Item>
-          <Dropdown.Item onClick={handleSort} name={'pop-max-min'}>POP MAX-MIN</Dropdown.Item>
-          <Dropdown.Item onClick={handleSort} name={'pop-min-max'}>POP MIN-MAX</Dropdown.Item>
+          <Dropdown.Item onClick={handleSort} name={'abc'}>
+            ABC
+          </Dropdown.Item>
+          <Dropdown.Item onClick={handleSort} name={'departments'}>
+            DEPARTMENTS
+          </Dropdown.Item>
+          <Dropdown.Item onClick={handleSort} name={'pop-max-min'}>
+            POP MAX-MIN
+          </Dropdown.Item>
+          <Dropdown.Item onClick={handleSort} name={'pop-min-max'}>
+            POP MIN-MAX
+          </Dropdown.Item>
         </DropdownButton>
       </label>
       <Outlet />
