@@ -40,11 +40,19 @@ export default function SortResults() {
 
     if (route === '/sort/pop-max-min') {
       title = 'POPULATION ORDER MAX-MIN:'
-
     } else {
       title = 'POPULATION ORDER MIN-MAX:'
-
     }
+
+    return citiesByPop.map(city => {
+      return (
+        <tr key={`${city.city}${city.population}`}>
+          <td>{city.city}</td>
+          <td>{city.adminName}</td>
+          <td>{city.population}</td>
+        </tr>
+      )
+    })
   }
 
   switch (route) {
