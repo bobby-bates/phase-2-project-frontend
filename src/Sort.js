@@ -1,12 +1,15 @@
-import { Link, useNavigate, Outlet } from 'react-router-dom'
-import { Dropdown, DropdownButton } from 'react-bootstrap'
+import { useNavigate, Outlet } from 'react-router-dom'
+import { DropdownButton, Dropdown } from 'react-bootstrap'
 
-export default function Sort() {
+export default function Sort({ cities }) {
   const navigate = useNavigate()
+
+  // Sort logic here:
+  
 
   return (
     <>
-      <label>SORT CITIES BY
+      <label>SORT CITIES BY:
         <DropdownButton id='dropdown-basic-button' title='SELECT'>
           <Dropdown.Item onClick={()=>navigate('abc')}>ABC</Dropdown.Item>
           <Dropdown.Item onClick={()=>navigate('deptartments')}>DEPARTMENTS</Dropdown.Item>

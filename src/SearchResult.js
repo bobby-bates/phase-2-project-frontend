@@ -5,10 +5,11 @@ export default function SearchResult() {
 
   // const cityParams = useParams().cityName
   const city = useLocation().state.city
+  const API_KEY = process.env.API_KEY
 
   // TODO: Find a way to multiline this URL without breaking it
   const mapUrl = 
-  `https://maps.googleapis.com/maps/api/staticmap?center=${city.lat},${city.lng}&zoom=10&scale=2&maptype=hybrid&size=400x400&scale=1&key=AIzaSyDF8PzvjuzBnixB4AGXiCfRN_2QC6GzoBk`
+  `https://maps.googleapis.com/maps/api/staticmap?center=${city.lat},${city.lng}&zoom=10&scale=2&maptype=hybrid&size=400x400&scale=1&key=${API_KEY}`
     
     // mapUrl.replace('\n', '')
   return (
