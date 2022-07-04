@@ -28,6 +28,14 @@ export default function SortResults() {
 
   const popOutput = route => {
     const citiesByPop = location.state.citiesByPop
+
+    if (route === '/sort/pop-max-min') {
+      title = 'POPULATION ORDER MAX-MIN:'
+
+    } else {
+      title = 'POPULATION ORDER MIN-MAX:'
+
+    }
   }
 
   switch (route) {
@@ -36,6 +44,7 @@ export default function SortResults() {
       tableOutput = abcOutput()
       break
     case '/sort/departments':
+      title = 'DEPARTMENT ORDER:'
       tableOutput = deptOutput()
       break
     case '/sort/pop-max-min':
