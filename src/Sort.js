@@ -21,23 +21,32 @@ export default function Sort({ cities }) {
         break
       }
       case 'departments': {
-        // debugger
-        // Crate temp arr with index and department:
-        const mapped = cities.map((city, i) => ({ i, department: city.adminName }))
-        // debugger
-        // Sort temp arr by department:
-        mapped.sort((a, b) => {
-          return a.department.localeCompare(b.department, 'es-CO', { ignorePunctuation: true })
+        // Create arr of all departments:
+        const depts = []
+        cities.forEach(city => {
+          return !depts.includes(city.adminName) ? depts.push(city.adminName) : null
         })
-        // debugger
-        // Map temp arr to full city objs:
-        const citiesSortedDepts = mapped.map(v => cities[v.i])
-        debugger
-        // Split new cities arr by department:
-        
 
+        // Loop depts and create abc sorted arr for each dept
+        let deptArrs = []
+        depts.forEach(dept => {
+          const deptArr = cities.filter(city => city.adminName === dept)
+            deptArr.sort((a, b) => {
+            const cityA = a.city
+            const cityB = b.city
+            return cityA.localeCompare(cityB, 'es-CO', { ignorePunctuation: true })
+          })
+          deptArrs.push(deptArr)
+        })
 
-        navigate('departments')
+        // Merge all sorted dept arrs into single arr:
+        const citiesByDeptSingleArr = deptArrs.flat()
+
+        navigate('departments',
+          {state:{
+            citiesByDeptSingleArr: citiesByDeptSingleArr,
+            citiesByDeptManyArrs: deptArrs
+          }})
         break
       }
       case 'pop-max-min': {
