@@ -5,7 +5,8 @@ export default function SearchResult() {
 
   // const cityParams = useParams().cityName
   const city = useLocation().state.city
-  const API_KEY = process.env.API_KEY
+  const API_KEY = process.env.REACT_APP_API_KEY
+  console.log(API_KEY)
 
   // TODO: Find a way to multiline this URL without breaking it
   const mapUrl = 
