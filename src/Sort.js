@@ -8,15 +8,26 @@ export default function Sort({ cities }) {
     // debugger
     const name = e.target.name
 
-    // Create array of city name strings:
-    const cityNames = () => cities.map(city => city.city)
+
     // debugger
     // eslint-disable-next-line default-case
     switch (name) {
       case 'abc': {
-        const sortedCities = cityNames().sort((a, b) => {
-          return a.localeCompare(b, 'es-CO', { ignorePunctuation: true })
+          // Create array of city name strings:
+          // const cityNames = () => cities.map(city => city.city)
+          const cityNames = cities.map((city, i) => ({ i, name: city.city }))
+          // debugger
+          const sortedCityNames = cityNames.sort((a, b) => {
+            // debugger
+            const nameA = a.name
+            const nameB = b.name
+
+            return nameA.localeCompare(nameB, 'es-CO', { ignorePunctuation: true })
         })
+        // debugger
+        // Combine sorted city names with full cities arr:
+        const sortedCities = sortedCityNames.map(name => cities[name.i])
+        // debugger
         navigate('abc', {state:{ sortedCities: sortedCities }})
         break
       }
