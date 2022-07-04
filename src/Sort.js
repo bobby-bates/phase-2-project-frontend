@@ -61,7 +61,6 @@ export default function Sort({ cities }) {
 
   const handleSort = e => {
     const name = e.target.name
-    // eslint-disable-next-line default-case
     switch (name) {
       case 'abc':
         sortByABC(name)
@@ -73,6 +72,8 @@ export default function Sort({ cities }) {
       case 'pop-min-max':
         sortByPop(name)
         break
+      default:
+        console.log('Switch Error!')
     }
   }
 
