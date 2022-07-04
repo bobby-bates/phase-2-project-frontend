@@ -1,8 +1,7 @@
 import { useParams, useLocation } from 'react-router-dom'
 import Table from 'react-bootstrap/Table'
 
-export default function SearchResult() {
-
+export default function SearchResult({ alert, handleCityClick }) {
   // const cityParams = useParams().cityName
   const city = useLocation().state.city
   const API_KEY = process.env.REACT_APP_API_KEY
@@ -14,11 +13,13 @@ export default function SearchResult() {
     // mapUrl.replace('\n', '')
   return (
     <>
+      {alert}
+      <h2>CLICK CITY NAME TO FAVORITE</h2>
       <Table borderless>
         <tbody>
           <tr>
             <th>City:</th>
-            <td>{city.city}</td>
+            <td onClick={handleCityClick} data-city-dept={city.adminName}>{city.city}</td>
           </tr>
           <tr>
             <th>Department:</th>

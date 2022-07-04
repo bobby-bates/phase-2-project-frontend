@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom'
 import Table from 'react-bootstrap/Table'
 
-export default function SortResults() {
+export default function SortResults({ handleCityClick }) {
   const location = useLocation()
 
   const route = location.pathname
