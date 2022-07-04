@@ -18,20 +18,43 @@ export default function App() {
         setCities([...cities])
       })
     }, [])
-    // console.log(cities)
+
+    const handleCityClick = () => {
+
+    }
 
   return (
     <Routes>
       <Route index element={<Home />} />
       <Route path='/' element={<NavBar />}>
         <Route path='search' element={<Search cities={cities} />}>
-          <Route path=':cityName' element={<SearchResult />} />
+          <Route 
+            path=':cityName'
+            element={<SearchResult
+            handleCityClick={handleCityClick} />}
+          />
         </Route>
         <Route path='sort' element={<Sort cities={cities} />}>
-          <Route path='abc' element={<SortResults />} />
-          <Route path='departments' element={<SortResults />} />
-          <Route path='pop-max-min' element={<SortResults />} />
-          <Route path='pop-min-max' element={<SortResults />} />
+          <Route
+            path='abc'
+            element={<SortResults
+            handleCityClick={handleCityClick} />}
+          />
+          <Route
+            path='departments'
+            element={<SortResults
+            handleCityClick={handleCityClick} />}
+          />
+          <Route
+            path='pop-max-min'
+            element={<SortResults
+            handleCityClick={handleCityClick} />}
+          />
+          <Route
+            path='pop-min-max'
+            element={<SortResults
+            handleCityClick={handleCityClick} />}
+          />
         </Route>
       </Route>
     </Routes>
